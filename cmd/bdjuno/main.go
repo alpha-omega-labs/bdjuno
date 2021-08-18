@@ -9,6 +9,8 @@ import (
 
 	"github.com/forbole/bdjuno/types/config"
 
+	likeapp "github.com/likecoin/likechain/app"
+
 	"github.com/forbole/bdjuno/database"
 	"github.com/forbole/bdjuno/modules"
 )
@@ -36,6 +38,7 @@ func main() {
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
 		simapp.ModuleBasics,
+		likeapp.ModuleBasics,
 	}
 }
 
