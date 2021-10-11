@@ -4,6 +4,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/cosmos/cosmos-sdk/types/module"
+
+	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
+
+	"github.com/forbole/bdjuno/crypto/ethsecp256k1"
 )
 
 // MakeEncodingConfig creates an EncodingConfig to properly handle all the messages
@@ -15,6 +19,8 @@ func MakeEncodingConfig(managers []module.BasicManager) func() params.EncodingCo
 		manager := mergeBasicManagers(managers)
 		manager.RegisterLegacyAminoCodec(encodingConfig.Amino)
 		manager.RegisterInterfaces(encodingConfig.InterfaceRegistry)
+		// RegisterInterfaces register the Ethermint key concrete types.
+		encodingConfig.InterfaceRegistry.RegisterImplementations((*cryptotypes.PubKey)(nil), &ethsecp256k1.PubKey{})
 		return encodingConfig
 	}
 }
