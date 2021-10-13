@@ -5,13 +5,16 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 
 	ethermint "github.com/tharsis/ethermint/encoding"
+	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 )
 
 // MakeEncodingConfig creates an EncodingConfig to properly handle all the messages
 func MakeEncodingConfig(managers []module.BasicManager) func() params.EncodingConfig {
 	return func() params.EncodingConfig {
 		manager := mergeBasicManagers(managers)
-		return ethermint.MakeConfig(manager)
+		encoding := ethermint.MakeConfig(manager)
+		evmtypes.RegisterInterfaces(encoding.InterfaceRegistry)
+		return encoding
 	}
 }
 
