@@ -14,8 +14,8 @@ CREATE INDEX staking_params_height_index ON staking_params (height);
 CREATE TABLE staking_pool
 (
     one_row_id        BOOLEAN NOT NULL DEFAULT TRUE PRIMARY KEY,
-    bonded_tokens     BIGINT  NOT NULL,
-    not_bonded_tokens BIGINT  NOT NULL,
+    bonded_tokens     NUMERIC  NOT NULL,
+    not_bonded_tokens NUMERIC  NOT NULL,
     height            BIGINT  NOT NULL,
     CHECK (one_row_id)
 );
@@ -52,7 +52,7 @@ CREATE TABLE validator_commission
 (
     validator_address   TEXT    NOT NULL REFERENCES validator (consensus_address) PRIMARY KEY,
     commission          DECIMAL NOT NULL,
-    min_self_delegation BIGINT  NOT NULL,
+    min_self_delegation NUMERIC  NOT NULL,
     height              BIGINT  NOT NULL
 );
 CREATE INDEX validator_commission_height_index ON validator_commission (height);

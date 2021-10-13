@@ -21,7 +21,7 @@ CREATE TABLE block
     height           BIGINT UNIQUE PRIMARY KEY,
     hash             TEXT                        NOT NULL UNIQUE,
     num_txs          INTEGER DEFAULT 0,
-    total_gas        BIGINT  DEFAULT 0,
+    total_gas        NUMERIC  DEFAULT 0,
     proposer_address TEXT REFERENCES validator (consensus_address),
     timestamp        TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
@@ -45,8 +45,8 @@ CREATE TABLE transaction
     fee          JSONB   NOT NULL DEFAULT '{}'::JSONB,
 
     /* Tx response */
-    gas_wanted   BIGINT           DEFAULT 0,
-    gas_used     BIGINT           DEFAULT 0,
+    gas_wanted   NUMERIC           DEFAULT 0,
+    gas_used     NUMERIC           DEFAULT 0,
     raw_log      TEXT,
     logs         JSONB
 );

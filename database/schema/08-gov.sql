@@ -65,8 +65,8 @@ CREATE INDEX proposal_tally_result_height_index ON proposal_tally_result (height
 CREATE TABLE proposal_staking_pool_snapshot
 (
     proposal_id       INTEGER REFERENCES proposal (id) PRIMARY KEY,
-    bonded_tokens     BIGINT NOT NULL,
-    not_bonded_tokens BIGINT NOT NULL,
+    bonded_tokens     NUMERIC NOT NULL,
+    not_bonded_tokens NUMERIC NOT NULL,
     height            BIGINT NOT NULL,
     CONSTRAINT unique_staking_pool_snapshot UNIQUE (proposal_id)
 );
@@ -77,7 +77,7 @@ CREATE TABLE proposal_validator_status_snapshot
     id                SERIAL PRIMARY KEY NOT NULL,
     proposal_id       INTEGER REFERENCES proposal (id),
     validator_address TEXT               NOT NULL REFERENCES validator (consensus_address),
-    voting_power      BIGINT             NOT NULL,
+    voting_power      NUMERIC             NOT NULL,
     status            INT                NOT NULL,
     jailed            BOOLEAN            NOT NULL,
     height            BIGINT             NOT NULL,
