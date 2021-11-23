@@ -18,8 +18,9 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/tendermint/tendermint v0.34.14
 	github.com/tharsis/ethermint v0.8.0
+	github.com/tharsis/evmos v0.2.0
 	github.com/ziutek/mymysql v1.5.4 // indirect
-	google.golang.org/grpc v1.41.0
+	google.golang.org/grpc v1.42.0
 )
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
