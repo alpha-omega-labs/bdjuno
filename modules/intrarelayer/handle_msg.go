@@ -1,16 +1,11 @@
 package intrarelayer
 
 import (
-	"fmt"
-
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/forbole/bdjuno/database"
-
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	juno "github.com/desmos-labs/juno/types"
-	irmtypes 	"github.com/tharsis/evmos/x/intrarelayer/types"
-
+	"github.com/forbole/bdjuno/database"
+	irmtypes "github.com/tharsis/evmos/x/intrarelayer/types"
 )
 
 // TODO: do something with this messages
@@ -22,26 +17,48 @@ func HandleMsg(
 		return nil
 	}
 
-	switch cosmosMsg := msg.(type) {
-		switch msg := msg.(type) {
-			// Converters
-			case *irmtypes.MsgConvertCoin:
-				return nil
-			case *irmtypes.MsgConvertERC20:
-				return nil
-			// Proposals
-			case *types.RegisterCoinProposal:
-				return nil
-			case *types.RegisterERC20Proposal:
-				return nil
-			case *types.ToggleTokenRelayProposal:
-				return nil
-			case *types.UpdateTokenPairERC20Proposal:
-				return nil
-			default:
-				return nil
-		}
+	switch msg.(type) {
+	// Converters
+	case *irmtypes.MsgConvertCoin:
+		return nil
+	case *irmtypes.MsgConvertERC20:
+		return nil
+	default:
+		return nil
+		// switch cosmosMsg := msg.(govtypes.Content) {
+		// // Proposals
+		// case *irmtypes.RegisterCoinProposal:
+		// 	return nil
+		// case *irmtypes.RegisterERC20Proposal:
+		// 	return nil
+		// case *irmtypes.ToggleTokenRelayProposal:
+		// 	return nil
+		// case *irmtypes.UpdateTokenPairERC20Proposal:
+		// 	return nil
 	}
 
 	return nil
 }
+
+// func HandleMsg(
+// 	tx *juno.Tx, index int, msg sdk.Msg,
+// 	govClient govtypes.QueryClient,
+// 	cdc codec.Codec, db *database.Db,
+// ) error {
+// 	if len(tx.Logs) == 0 {
+// 		return nil
+// 	}
+
+// 	switch cosmosMsg := msg.(type) {
+// 	case *govtypes.MsgSubmitProposal:
+// 		return handleMsgSubmitProposal(tx, index, cosmosMsg, govClient, cdc, db)
+
+// 	case *govtypes.MsgDeposit:
+// 		return handleMsgDeposit(tx, cosmosMsg, govClient, db)
+
+// 	case *govtypes.MsgVote:
+// 		return handleMsgVote(tx, cosmosMsg, db)
+// 	}
+
+// 	return nil
+// }
