@@ -1,4 +1,4 @@
-package evm
+package intrarelayer
 
 import (
 	"github.com/forbole/bdjuno/database"

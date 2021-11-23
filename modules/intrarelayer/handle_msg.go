@@ -1,4 +1,4 @@
-package evm
+package intrarelayer
 
 import (
 	"fmt"
@@ -23,7 +23,6 @@ func HandleMsg(
 	}
 
 	switch cosmosMsg := msg.(type) {
-		ctx = ctx.WithEventManager(sdk.NewEventManager())
 		switch msg := msg.(type) {
 			// Converters
 			case *irmtypes.MsgConvertCoin:
