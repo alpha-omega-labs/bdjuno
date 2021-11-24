@@ -23,6 +23,7 @@ import (
 
 	"github.com/forbole/bdjuno/modules/evm"
 	"github.com/forbole/bdjuno/modules/history"
+	"github.com/forbole/bdjuno/modules/intrarelayer"
 
 	"github.com/forbole/bdjuno/database"
 	"github.com/forbole/bdjuno/modules/auth"
@@ -100,5 +101,6 @@ func (r *Registrar) BuildModules(ctx registrar.Context) jmodules.Modules {
 		staking.NewModule(ctx.ParsingConfig, bankClient, stakingClient, distrClient, encodingConfig, bigDipperBd),
 		history.NewModule(r.parser, encodingConfig, bigDipperBd),
 		evm.NewModule(encodingConfig, bigDipperBd),
+		intrarelayer.NewModule(encodingConfig, bigDipperBd),
 	}
 }
