@@ -6,6 +6,7 @@ import (
 
 	ethermint "github.com/tharsis/ethermint/encoding"
 	evmtypes "github.com/tharsis/ethermint/x/evm/types"
+	irmtypes "github.com/tharsis/evmos/x/intrarelayer/types"
 )
 
 // MakeEncodingConfig creates an EncodingConfig to properly handle all the messages
@@ -14,6 +15,8 @@ func MakeEncodingConfig(managers []module.BasicManager) func() params.EncodingCo
 		manager := mergeBasicManagers(managers)
 		encoding := ethermint.MakeConfig(manager)
 		evmtypes.RegisterInterfaces(encoding.InterfaceRegistry)
+		irmtypes.RegisterInterfaces(encoding.InterfaceRegistry)
+
 		return encoding
 	}
 }
