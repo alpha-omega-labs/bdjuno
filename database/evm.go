@@ -8,7 +8,7 @@ import (
 )
 
 // SaveEvmParams allows to store the given evm parameters inside the database
-func (db *Db) SaveEvmParams(params types.EvmParamsInline) error {
+func (db *Db) SaveEvmParams(params types.EvmParams) error {
 	paramsBz, err := json.Marshal(&params.Params)
 	if err != nil {
 		return fmt.Errorf("error while marshaling params: %s", err)
