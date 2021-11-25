@@ -16,6 +16,7 @@ import (
 	jmodules "github.com/desmos-labs/juno/modules"
 	"github.com/desmos-labs/juno/modules/messages"
 	"github.com/desmos-labs/juno/modules/registrar"
+	evmtypes "github.com/tharsis/ethermint/x/evm/types"
 
 	"github.com/forbole/bdjuno/types/config"
 
@@ -86,6 +87,7 @@ func (r *Registrar) BuildModules(ctx registrar.Context) jmodules.Modules {
 	mintClient := minttypes.NewQueryClient(grpcConnection)
 	slashingClient := slashingtypes.NewQueryClient(grpcConnection)
 	stakingClient := stakingtypes.NewQueryClient(grpcConnection)
+	evmClient := evmtypes.NewQueryClient(grpcConnection)
 
 	return []jmodules.Module{
 		messages.NewModule(r.parser, encodingConfig.Marshaler, ctx.Database),
@@ -100,7 +102,7 @@ func (r *Registrar) BuildModules(ctx registrar.Context) jmodules.Modules {
 		slashing.NewModule(slashingClient, bigDipperBd),
 		staking.NewModule(ctx.ParsingConfig, bankClient, stakingClient, distrClient, encodingConfig, bigDipperBd),
 		history.NewModule(r.parser, encodingConfig, bigDipperBd),
-		evm.NewModule(encodingConfig, bigDipperBd),
+		evm.NewModule(encodingConfig, bigDipperBd, evmClient),
 		intrarelayer.NewModule(encodingConfig, bigDipperBd),
 	}
 }
