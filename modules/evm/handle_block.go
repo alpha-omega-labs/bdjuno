@@ -36,7 +36,7 @@ func updateParams(height int64, evmClient evmtypes.QueryClient, db *database.Db)
 
 	err = db.SaveEvmParams(types.NewEvmParamsInline(evmParamsRes.GetParams(), height))
 	if err != nil {
-		log.Error().Str("module", "distribution").Err(err).
+		log.Error().Str("module", "evm").Err(err).
 			Int64("height", height).
 			Msg("error while saving params")
 		return

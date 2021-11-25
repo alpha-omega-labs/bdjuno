@@ -20,10 +20,10 @@ VALUES ($1, $2)
 ON CONFLICT (one_row_id) DO UPDATE 
     SET params = excluded.params,
       	height = excluded.height
-WHERE distribution_params.height <= excluded.height`
+WHERE evm_params.height <= excluded.height`
 	_, err = db.Sql.Exec(stmt, string(paramsBz), params.Height)
 	if err != nil {
-		return fmt.Errorf("error while storing distribution params: %s", err)
+		return fmt.Errorf("error while storing evm params: %s", err)
 	}
 
 	return nil
