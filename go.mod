@@ -137,4 +137,4 @@ replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alp
 
 replace github.com/tendermint/tendermint => github.com/forbole/tendermint v0.34.13-0.20211005074050-33591287eca5
 
-replace github.com/desmos-labs/juno => /home/rama/tharsis/explorer/juno
+replace github.com/desmos-labs/juno => github.com/hanchon/juno v0.0.0-20211125091034-3d456db25f98
