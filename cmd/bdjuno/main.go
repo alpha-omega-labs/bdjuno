@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	ibc "github.com/cosmos/ibc-go/modules/core"
+	ibc "github.com/cosmos/ibc-go/v2/modules/core"
 	"github.com/desmos-labs/juno/cmd"
 	parsecmd "github.com/desmos-labs/juno/cmd/parse"
 	"github.com/desmos-labs/juno/modules/messages"
