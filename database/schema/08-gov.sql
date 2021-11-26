@@ -52,10 +52,10 @@ CREATE INDEX proposal_vote_height_index ON proposal_vote (height);
 CREATE TABLE proposal_tally_result
 (
     proposal_id  INTEGER REFERENCES proposal (id) PRIMARY KEY,
-    yes          BIGINT NOT NULL,
-    abstain      BIGINT NOT NULL,
-    no           BIGINT NOT NULL,
-    no_with_veto BIGINT NOT NULL,
+    yes          NUMERIC NOT NULL,
+    abstain      NUMERIC NOT NULL,
+    no           NUMERIC NOT NULL,
+    no_with_veto NUMERIC NOT NULL,
     height       BIGINT NOT NULL,
     CONSTRAINT unique_tally_result UNIQUE (proposal_id)
 );
