@@ -285,10 +285,10 @@ func (db *Db) SaveTallyResults(tallys []types.TallyResult) error {
 		vi := i * 6
 		query += fmt.Sprintf("($%d,$%d,$%d,$%d,$%d,$%d),", vi+1, vi+2, vi+3, vi+4, vi+5, vi+6)
 		param = append(param, tally.ProposalID,
-			tally.Yes,
-			tally.Abstain,
-			tally.No,
-			tally.NoWithVeto,
+			tally.Yes.String(),
+			tally.Abstain.String(),
+			tally.No.String(),
+			tally.NoWithVeto.String(),
 			tally.Height,
 		)
 	}
@@ -325,7 +325,7 @@ ON CONFLICT ON CONSTRAINT unique_staking_pool_snapshot DO UPDATE SET
 WHERE proposal_staking_pool_snapshot.height <= excluded.height`
 
 	_, err := db.Sql.Exec(stmt,
-		snapshot.ProposalID, snapshot.Pool.BondedTokens.Int64(), snapshot.Pool.NotBondedTokens.Int64(), snapshot.Pool.Height)
+		snapshot.ProposalID, snapshot.Pool.BondedTokens.String(), snapshot.Pool.NotBondedTokens.String(), snapshot.Pool.Height)
 	if err != nil {
 		return fmt.Errorf("error while storing proposal staking pool snapshot: %s", err)
 	}

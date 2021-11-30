@@ -54,10 +54,10 @@ func saveProposals(slice govtypes.Proposals, db *database.Db) error {
 
 		tallyResults[index] = types.NewTallyResult(
 			proposal.ProposalId,
-			proposal.FinalTallyResult.Yes.Int64(),
-			proposal.FinalTallyResult.Abstain.Int64(),
-			proposal.FinalTallyResult.No.Int64(),
-			proposal.FinalTallyResult.NoWithVeto.Int64(),
+			proposal.FinalTallyResult.Yes.BigInt(),
+			proposal.FinalTallyResult.Abstain.BigInt(),
+			proposal.FinalTallyResult.No.BigInt(),
+			proposal.FinalTallyResult.NoWithVeto.BigInt(),
 			1,
 		)
 

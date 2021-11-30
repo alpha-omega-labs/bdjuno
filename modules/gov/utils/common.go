@@ -129,10 +129,10 @@ func updateProposalTallyResult(proposal govtypes.Proposal, govClient govtypes.Qu
 	return db.SaveTallyResults([]types.TallyResult{
 		types.NewTallyResult(
 			proposal.ProposalId,
-			res.Tally.Yes.Int64(),
-			res.Tally.Abstain.Int64(),
-			res.Tally.No.Int64(),
-			res.Tally.NoWithVeto.Int64(),
+			res.Tally.Yes.BigInt(),
+			res.Tally.Abstain.BigInt(),
+			res.Tally.No.BigInt(),
+			res.Tally.NoWithVeto.BigInt(),
 			height,
 		),
 	})
