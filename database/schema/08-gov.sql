@@ -55,7 +55,7 @@ CREATE TABLE proposal_tally_result
     yes          TEXT NOT NULL,
     abstain      TEXT NOT NULL,
     no           TEXT NOT NULL,
-    no_with_veto NUMERIC NOT NULL,
+    no_with_veto TEXT NOT NULL,
     height       BIGINT NOT NULL,
     CONSTRAINT unique_tally_result UNIQUE (proposal_id)
 );
